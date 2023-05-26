@@ -92,10 +92,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LogitechGSDK.cs" />
-    <Compile Include="KeyPoint.cs" />
+    <Compile Include="Color.cs" />
+    <Compile Include="IDisplayController.cs" />
+    <Compile Include="KeyboardController.cs" />
+    <Compile Include="LedCSharp\LogitechGSDK.cs" />
+    <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SnakeGame.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />

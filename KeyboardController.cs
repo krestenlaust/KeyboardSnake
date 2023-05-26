@@ -1,27 +1,25 @@
-﻿namespace KeyboardSnake
-{
-    /// <summary>
-    /// A dot on the keyboard (from a macroscopic point of view).
-    /// </summary>
-    public readonly struct KeyPoint
-    {
-        public readonly int x;
-        public readonly int y;
-        public readonly int keyCode;
+﻿using System;
+using LedCSharp;
 
-        public KeyPoint(int x, int y)
+namespace KeyboardSnake
+{
+    public class KeyboardController : IDisposable, IDisplayController
+    {
+        public KeyboardController()
         {
-            this.x = x;
-            this.y = y;
-            keyCode = KeyCode(x, y);
+            LogitechGSDK.LogiLedInit();
+            LogitechGSDK.LogiLedSaveCurrentLighting();
         }
 
-        public static bool operator ==(KeyPoint a, KeyPoint b) => a.x == b.x && a.y == b.y;
-
-        public static bool operator !=(KeyPoint a, KeyPoint b) => a.x != b.x || a.y != b.y;
-
-        public static int KeyCode(int x, int y)
+        public void Dispose()
         {
+            LogitechGSDK.LogiLedShutdown();
+        }
+
+        static int ToKeyCode(Point point)
+        {
+            int x = point.x;
+            int y = point.y;
             int code = 0;
 
             // number row
@@ -73,6 +71,11 @@
             }
 
             return code;
+        }
+
+        public void SetColor(Point point, Color color)
+        {
+            LogitechGSDK.LogiLedSetLightingForKeyWithScanCode(ToKeyCode(point), color.RedPercentage, color.GreenPercentage, color.BluePercentage);
         }
     }
 }
