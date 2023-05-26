@@ -75,7 +75,7 @@ namespace KeyboardSnake
 
         public void SetColor(Point point, Color color)
         {
-            LogitechGSDK.LogiLedSetLightingForKeyWithScanCode(ToKeyCode(point), color.RedPercentage, color.GreenPercentage, color.BluePercentage);
+            LogitechGSDK.LogiLedSetLightingForKeyWithScanCode(ToKeyCode(point), color.Red, color.Green, color.Blue);
         }
     }
 }

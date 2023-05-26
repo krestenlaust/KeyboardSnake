@@ -2,15 +2,26 @@
 {
     public struct Color
     {
-        public int RedPercentage;
-        public int GreenPercentage;
-        public int BluePercentage;
+        /// <summary>
+        /// The red component expressed as a percentage.
+        /// </summary>
+        public int Red;
+
+        /// <summary>
+        /// The green component expressed as a percentage.
+        /// </summary>
+        public int Green;
+
+        /// <summary>
+        /// The blue component expressed as a percentage.
+        /// </summary>
+        public int Blue;
 
         public Color(int redPercentage, int greenPercentage, int bluePercentage)
         {
-            RedPercentage = redPercentage;
-            GreenPercentage = greenPercentage;
-            BluePercentage = bluePercentage;
+            Red = redPercentage;
+            Green = greenPercentage;
+            Blue = bluePercentage;
         }
     }
 }
