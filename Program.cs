@@ -1,8 +1,8 @@
-﻿using LedCSharp;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Media;
+using LedCSharp;
 
 namespace KeyboardSnake
 {
@@ -19,10 +19,10 @@ namespace KeyboardSnake
         static int oldPlayerY = 0;
 
         static Queue<KeyPoint> playerBody = new Queue<KeyPoint>();
-        
+
         static int directionX = 1;
         static int directionY = 0;
-        
+
         static int oldDirectionX = 1;
         static int oldDirectionY = 0;
 
@@ -93,14 +93,16 @@ namespace KeyboardSnake
                 }
 
                 if (timer.ElapsedMilliseconds < MOVE_INTERVAL_MS)
+                {
                     continue;
+                }
 
                 timer.Restart();
 
                 KeyPoint oldPlayer = new KeyPoint(oldPlayerX, oldPlayerY);
 
-                playerX = mod(playerX + directionX, MAP_WIDTH);
-                playerY = mod(playerY + directionY, MAP_HEIGHT);
+                playerX = Mod(playerX + directionX, MAP_WIDTH);
+                playerY = Mod(playerY + directionY, MAP_HEIGHT);
 
                 oldPlayerX = playerX;
                 oldPlayerY = playerY;
@@ -114,10 +116,10 @@ namespace KeyboardSnake
                     KeyPoint lastPart = playerBody.Dequeue();
                     LogitechGSDK.LogiLedSetLightingForKeyWithScanCode(lastPart.keyCode, 0, 0, 0);
                 }
-                
+
                 // put new part where player was before.
                 playerBody.Enqueue(oldPlayer);
-                
+
                 // draw body part
                 LogitechGSDK.LogiLedSetLightingForKeyWithScanCode(oldPlayer.keyCode, 0, 60, 0);
 
@@ -139,7 +141,7 @@ namespace KeyboardSnake
                     RedrawApple();
                     gameOverSound.Play();
                 }
-                
+
                 if (apple == player)
                 {
                     // new apple
@@ -153,18 +155,17 @@ namespace KeyboardSnake
         static void RedrawTargetPoint()
         {
             KeyPoint oldTarget = new KeyPoint(
-                mod(playerX + oldDirectionX, MAP_WIDTH), 
-                mod(playerY + oldDirectionY, MAP_HEIGHT)
-                );
+                Mod(playerX + oldDirectionX, MAP_WIDTH),
+                Mod(playerY + oldDirectionY, MAP_HEIGHT));
             KeyPoint target = new KeyPoint(
-                mod(playerX + directionX, MAP_WIDTH), 
-                mod(playerY + directionY, MAP_HEIGHT)
-                );
+                Mod(playerX + directionX, MAP_WIDTH),
+                Mod(playerY + directionY, MAP_HEIGHT));
 
             if (oldTarget.x == appleX && oldTarget.y == appleY)
             {
                 RedrawApple();
-            }else
+            }
+            else
             {
                 LogitechGSDK.LogiLedSetLightingForKeyWithScanCode(oldTarget.keyCode, 0, 0, 0);
             }
@@ -196,7 +197,7 @@ namespace KeyboardSnake
             appleCollectSound.Play();
         }
 
-        static int mod(int x, int m) => (x % m + m) % m;
+        static int Mod(int x, int m) => ((x % m) + m) % m;
     }
 }
 

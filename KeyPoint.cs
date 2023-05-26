@@ -17,6 +17,7 @@
         }
 
         public static bool operator ==(KeyPoint a, KeyPoint b) => a.x == b.x && a.y == b.y;
+
         public static bool operator !=(KeyPoint a, KeyPoint b) => a.x != b.x || a.y != b.y;
 
         public static int KeyCode(int x, int y)
