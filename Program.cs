@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Media;
-using LedCSharp;
-
-namespace KeyboardSnake
+﻿namespace KeyboardSnake
 {
     class Program
     {
@@ -12,8 +6,18 @@ namespace KeyboardSnake
         {
             KeyboardController controller = new KeyboardController();
 
-            SnakeGame game = new SnakeGame(controller);
-            game.GameLoop();
+            IGame game = new SnakeGame(controller);
+
+            game.Start();
+
+            while (true)
+            {
+                // Close if returned false
+                if (!game.Update())
+                {
+                    break;
+                }
+            }
 
             controller.Dispose();
         }

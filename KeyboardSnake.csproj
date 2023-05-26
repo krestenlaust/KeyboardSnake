@@ -94,6 +94,7 @@
   <ItemGroup>
     <Compile Include="Color.cs" />
     <Compile Include="IDisplayController.cs" />
+    <Compile Include="IGame.cs" />
     <Compile Include="KeyboardController.cs" />
     <Compile Include="LedCSharp\LogitechGSDK.cs" />
     <Compile Include="Point.cs" />

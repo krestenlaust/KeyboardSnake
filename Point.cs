@@ -1,7 +1,7 @@
 ﻿namespace KeyboardSnake
 {
     /// <summary>
-    /// A dot on the keyboard (from a macroscopic point of view).
+    /// A point in space.
     /// </summary>
     public readonly struct Point
     {
