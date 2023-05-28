@@ -2,6 +2,9 @@
 {
     public interface IGame
     {
+        /// <summary>
+        /// Called when started.
+        /// </summary>
         void Start();
 
         /// <summary>

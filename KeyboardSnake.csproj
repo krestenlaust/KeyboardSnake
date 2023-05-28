@@ -93,9 +93,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Color.cs" />
-    <Compile Include="IDisplayController.cs" />
-    <Compile Include="IGame.cs" />
-    <Compile Include="KeyboardController.cs" />
+    <Compile Include="DisplayControllers\ConsoleController.cs" />
+    <Compile Include="DisplayControllers\MultiController.cs" />
+    <Compile Include="Models\IDisplayController.cs" />
+    <Compile Include="Models\IGame.cs" />
+    <Compile Include="DisplayControllers\KeyboardController.cs" />
     <Compile Include="LedCSharp\LogitechGSDK.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />

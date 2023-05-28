@@ -1,10 +1,13 @@
-﻿namespace KeyboardSnake
+﻿using System.Collections.Generic;
+
+namespace KeyboardSnake
 {
     class Program
     {
         static void Main(string[] args)
         {
-            KeyboardController controller = new KeyboardController();
+            var keyboardController = new KeyboardController();
+            var controller = new MultiController(new List<IDisplayController> { new ConsoleController(), keyboardController });
 
             IGame game = new SnakeGame(controller);
 
@@ -19,7 +22,7 @@
                 }
             }
 
-            controller.Dispose();
+            keyboardController.Dispose();
         }
     }
 }

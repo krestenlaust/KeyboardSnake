@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Media;
-using LedCSharp;
 
 namespace KeyboardSnake
 {
@@ -15,8 +14,8 @@ namespace KeyboardSnake
         static readonly Color AppleColor = new Color(100, 0, 0);
         static readonly Color NothingColor = new Color(0, 0, 0);
         static Random random = new Random();
-        static SoundPlayer appleCollectSound = new SoundPlayer("apple_collect.wav");
-        static SoundPlayer gameOverSound = new SoundPlayer("game_over.wav");
+        static SoundPlayer appleCollectSound = new SoundPlayer("Resources/apple_collect.wav");
+        static SoundPlayer gameOverSound = new SoundPlayer("Resources/game_over.wav");
 
         readonly IDisplayController displayController;
 
